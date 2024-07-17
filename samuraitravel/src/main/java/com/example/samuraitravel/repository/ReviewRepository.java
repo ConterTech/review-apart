@@ -8,5 +8,5 @@ import com.example.samuraitravel.entity.ReviewEntity;
 import com.example.samuraitravel.entity.Reviewpk;
 
 public interface ReviewRepository extends JpaRepository<ReviewEntity, Reviewpk>{
-	Page<ReviewEntity> findByHouseIdOrderByCreatedAtDesc(Integer houseId, Pageable pageable);
+	Page<ReviewEntity> findByIdOrderByCreatedAtDesc(Integer houseId, Pageable pageable);
 }

@@ -57,14 +57,14 @@ CREATE TABLE IF NOT EXISTS roles (
  );
  
 CREATE TABLE IF NOT EXISTS review (
-    house_id INT,
+    id INT,
     user_id INT,
     review_star INT NOT NULL,
     review_text TEXT NOT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     delete_flag BOOLEAN NOT NULL DEFAULT false,
-    PRIMARY KEY (house_id, user_id),
-    FOREIGN KEY (house_id) REFERENCES houses (id),
+    PRIMARY KEY (id, user_id),
+    FOREIGN KEY (id) REFERENCES houses (id),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );

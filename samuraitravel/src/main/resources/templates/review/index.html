@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
 	<div th:replace="~{fragment :: meta}"></div>
 
 	<div th:replace="~{fragment :: styles}"></div>
-	
-	<link th:href="@{/css/review.css}" rel="stylesheet" >
+
+	<link th:href="@{/css/review.css}" rel="stylesheet">
 
 	<title>レビュー一覧</title>
 </head>
@@ -17,57 +17,65 @@
 		<div th:replace="~{fragment :: header}"></div>
 
 		<main>
-			<nav class="my-3" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+			<nav class="mb-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 				<ol class="breadcrumb mb-0">
 					<li class="breadcrumb-item"><a th:href="@{/}">ホーム</a></li>
 					<li class="breadcrumb-item"><a th:href="@{/houses}">民宿一覧</a></li>
-					<li class="breadcrumb-item"><a th:href="@{/houses/__${houseId}}">民宿詳細</a></li>
+					<li class="breadcrumb-item"><a th:href="@{/houses}">民宿詳細</a></li>
 					<li class="breadcrumb-item active" aria-current="page">レビュー一覧</li>
 				</ol>
 			</nav>
 
-			<h1 class="mb-4 text-center" th:text="${houseName + 'のレビュー一覧'}"></h1>
 
-			<div id="review-list">
-				<div th:each="review : ${reviewList}">
-					<p th:text="${reivew.name}"></p>
-					<div>
-						<span th:each="reviewStar : ${review.reviewStarList}">
-							<span th:if="${reviewStar}">&#9733;</span>
-							<span th:unless!="${reviewStar}">&#9734;</span>
-						</span>
+			<div>
+				<h3>SAMURAIの宿のレビュー一覧</h3>
+			</div>
+
+			<div>
+				<h3 class="mb-4 text-center">レビュー</h3>
+				<div id="review-wrapper">
+					<div class="review" th:each="review : ${reviews}">
+						<div class="reviewer" th:text="${review.getUserId().getName()}"></div>
+						<th:block th:switch="${review.reviewStar}">
+							<div class="star-color" th:case=1>&#9733;&#9734;&#9734;&#9734;&#9734;</div>
+							<div class="star-color" th:case=2>&#9733;&#9733;&#9734;&#9734;&#9734;</div>
+							<div class="star-color" th:case=3>&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+							<div class="star-color" th:case=4>&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+							<div class="star-color" th:case=*>&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+						</th:block>
+						<div class="updated" th:text="${#temporals.format(review.getUpdatedAt,'yyyy年MM月dd日')}"></div>
+						<div th:text="${review.getReviewText()}"></div>
 					</div>
-					<p th:text="${review.updatedDateTime}"></p>
-					<p th:text="${review.contents}"></p>
 				</div>
 			</div>
 
 			<!-- ページネーション -->
-			<div th:if="${reviewPage.getTotalPages() > 1}" class="d-flex justify-content-center">
+			<div th:if="${reviews.getTotalPages() > 1}" class="d-flex justify-content-center">
 				<nav aria-label="レビュー一覧ページ">
 					<ul class="pagination">
 						<li class="page-item">
-							<span th:if="${reviewPage.isFirst()}" class="page-link disabled">前</span>
-							<a th:unless="${reviewPage.isFirst()}"
-								th:href="@{/review(page = ${reviewPage.getNumber() - 1})}"
+							<span th:if="${reviews.isFirst()}" class="page-link disabled">前</span>
+							<a th:unless="${reviews.isFirst()}"
+								th:href="@{/houses/__${house.getId()}__/review(page = ${review.getNumber() - 1}}"
 								class="page-link samuraitravel-page-link">前</a>
 						</li>
-						<li th:each="i : ${#numbers.sequence(0, reviewPage.getTotalPages() - 1)}"
-							class="page-item">
-							<span th:if="${i == reviewPage.getNumber()}"
-								class="page-link active samuraitravel-active" th:text="${i + 1}"></span>
-							<a th:unless="${i == reviewPage.getNumber()}" th:href="@{/review(page = ${i})}"
-								class="page-link samuraitravel-page-link" th:text="${i + 1}"></a>
-						</li>
+<!--						<li th:each="i : ${#numbers.sequence(0, reviews.getTotalPages() - 1)}" class="page-item">-->
+<!--							<span th:if="${i == reviews.getNumber()}" class="page-link active samuraitravel-active"-->
+<!--								th:text="${i + 1}"></span>-->
+<!--							<a th:unless="${i == reviews.getNumber()}"-->
+<!--								th:href="@{/houses/__${house.getId()}__/review(page = ${i}}"-->
+<!--								class="page-link samuraitravel-page-link" th:text="${i + 1}"></a>-->
+<!--						</li>-->
 						<li class="page-item">
-							<span th:if="${reviewPage.isLast()}" class="page-link disabled">次</span>
-							<a th:unless="${reviewPage.isLast()}"
-								th:href="@{/review(page = ${reviewPage.getNumber() + 1})}"
+							<span th:if="${reviews.isLast()}" class="page-link disabled">次</span>
+							<a th:unless="${reviews.isLast()}"
+								th:href="@{/houses/__${house.getId()}__/review(page = ${review.getNumber() + 1}}"
 								class="page-link samuraitravel-page-link">次</a>
 						</li>
 					</ul>
 				</nav>
 			</div>
+
 		</main>
 
 		<!-- フッター -->

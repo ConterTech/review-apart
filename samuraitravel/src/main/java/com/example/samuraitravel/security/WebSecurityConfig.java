@@ -19,7 +19,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                                .requestMatchers("/css/**", "/images/**", "/js/**", "/storage/**", "/", "/signup/**", "/houses", "/houses/{id}", "/stripe/webhook").permitAll()  // ‚·‚×‚Ä‚Ìƒ†�[ƒU�[‚ÉƒAƒNƒZƒX‚ð‹–‰Â‚·‚éURL           
+                                .requestMatchers("/css/**", "/images/**", "/js/**", "/storage/**", "/", "/signup/**", "/houses", "/houses/{id}","/houses/{id}/review","/stripe/webhook").permitAll()  // ‚·‚×‚Ä‚Ìƒ†�[ƒU�[‚ÉƒAƒNƒZƒX‚ð‹–‰Â‚·‚éURL           
                                 .requestMatchers("/admin/**").hasRole("ADMIN")  // ŠÇ—�ŽÒ‚É‚Ì‚ÝƒAƒNƒZƒX‚ð‹–‰Â‚·‚éURL
                                 .anyRequest().authenticated()                   // �ã‹LˆÈŠO‚ÌURL‚Íƒ�ƒOƒCƒ“‚ª•K—v�i‰ïˆõ‚Ü‚½‚ÍŠÇ—�ŽÒ‚Ì‚Ç‚¿‚ç‚Å‚àOK�j
                 )

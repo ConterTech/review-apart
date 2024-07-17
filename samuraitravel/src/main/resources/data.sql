@@ -87,16 +87,16 @@ INSERT IGNORE INTO reservations (id, house_id, user_id, checkin_date, checkout_d
 INSERT IGNORE INTO reservations (id, house_id, user_id, checkin_date, checkout_date, number_of_people, amount) VALUES (11, 11, 1, '2023-04-01', '2023-04-02', 2, 6000);
 
 -- reviewテーブル
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 1, 4, 'また泊まりたい', '2024-04-01', '2024-04-02', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 2, 5, '最高', '2024-04-01', '2024-04-03', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 3, 1, 'スタッフの対応が最悪', '2024-04-05', '2024-04-06', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 4, 2, 'そこそこな宿', '2024-04-01', '2024-04-13', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 5, 4, '料理が美味しい', '2024-04-01', '2024-04-22', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 6, 4, '景色がきれい', '2024-04-01', '2024-04-25', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 7, 5, 'また泊まります', '2024-04-01', '2024-06-02', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 8, 3, '平均的な宿', '2024-04-01', '2024-07-02', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 9, 4, '良かった', '2024-04-01', '2024-08-02', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 10, 1, 'もう行かない', '2024-04-01', '2024-09-02', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 11, 3, 'そこそこ', '2024-04-01', '2024-01-02', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 12, 5, '子供連れてまた来ます', '2024-04-01', '2024-03-02', 0);
-INSERT IGNORE INTO review (house_id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 1, 3, 'また泊まりたい', '2024-04-01', '2024-04-14', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 1, 4, 'また泊まりたい', '2024-04-01', '2024-04-02', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 2, 5, '最高', '2024-04-01', '2024-04-03', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 3, 1, 'スタッフの対応が最悪', '2024-04-05', '2024-04-06', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 4, 2, 'そこそこな宿', '2024-04-01', '2024-04-13', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 5, 4, '料理が美味しい', '2024-04-01', '2024-04-22', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 6, 4, '景色がきれい', '2024-04-01', '2024-04-25', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 7, 5, 'また泊まります', '2024-04-01', '2024-06-02', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 8, 3, '平均的な宿', '2024-04-01', '2024-07-02', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 9, 4, '良かった', '2024-04-01', '2024-08-02', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 10, 1, 'もう行かない', '2024-04-01', '2024-09-02', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 11, 3, 'そこそこ', '2024-04-01', '2024-01-02', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 12, 5, '子供連れてまた来ます', '2024-04-01', '2024-03-02', 0);
+INSERT IGNORE INTO review (id, user_id, review_star, review_text, created_at, updated_at, delete_flag) VALUES (1, 1, 3, 'また泊まりたい', '2024-04-01', '2024-04-14', 0);

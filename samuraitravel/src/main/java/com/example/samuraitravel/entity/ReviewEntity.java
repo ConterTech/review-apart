@@ -17,8 +17,8 @@ import lombok.Data;
 @IdClass(value=Reviewpk.class)
 public class ReviewEntity {
 	@Id
-	@Column(name = "house_id")
-	private Integer houseId;
+	@Column(name = "id")
+	private Integer id;
 	
 	@Id
 	@JoinColumn(name = "user_id")

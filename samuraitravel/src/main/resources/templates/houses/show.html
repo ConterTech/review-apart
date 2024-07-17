@@ -6,6 +6,8 @@
 
 	<div th:replace="~{fragment :: styles}"></div>
 
+	<link th:href="@{/css/review.css}" rel="stylesheet">
+
 	<!-- Flatpickr -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
@@ -164,30 +166,86 @@
 									</div>
 								</div>
 
-<!--								<div class="review">-->
-<!--									<h3>レビュー</h3>-->
-<!--									<div sec:authorize="isAnonymous()"></div>-->
-<!--									<div th:each="i:${#numbers.sequence(0, 5)}">-->
-<!--										<p>-->
-<!--											<span th:text="${i}"></span>-->
-<!--											<span th:text="${review[1].getUserId()}"></span>-->
-<!--										</p>-->
-
-<!--									</div>-->
-<!--								</div>-->
-								
 								<div>
-									<div th:each="review : ${reviews}">
-										<span th:text="${review.getUserId()}"></span>
+									<h3 class="mb-4 text-center">レビュー</h3>
+<!--									ログイン済みの時　-->
+									<div sec:authorize="isAuthenticated()">
+<!--										レビュー未投稿の時-->
+										<div class="text-center mb-3">
+											<button type="submit" class="btn text-white shadow-sm samuraitravel-btn">レビューを投稿する</button>
+										</div>
+<!--										レビュー投稿済みの時-->
+										<div id="review-wrapper">
+											<div class="review" th:each="review : ${reviews}">
+												<div class="reviewer" th:text="${review.getUserId().getName()}"></div>
+												<th:block th:switch="${review.reviewStar}">
+													<div class="star-color" th:case=1>
+														&#9733;&#9734;&#9734;&#9734;&#9734;
+													</div>
+													<div class="star-color" th:case=2>
+														&#9733;&#9733;&#9734;&#9734;&#9734;
+													</div>
+													<div class="star-color" th:case=3>
+														&#9733;&#9733;&#9733;&#9734;&#9734;
+													</div>
+													<div class="star-color" th:case=4>
+														&#9733;&#9733;&#9733;&#9733;&#9734;
+													</div>
+													<div class="star-color" th:case=*>
+														&#9733;&#9733;&#9733;&#9733;&#9733;
+													</div>
+												</th:block>
+												<div class="updated"
+													th:text="${#temporals.format(review.getUpdatedAt,'yyyy年MM月dd日')}">
+												</div>
+												<div th:text="${review.getReviewText()}"></div>
+											</div>
+										</div>
+									</div>
+<!--									未ログインの時　-->
+									<div sec:authorize="isAnonymous()">
+										<div id="review-wrapper">
+											<div class="review" th:each="review : ${reviews}">
+												<div class="reviewer" th:text="${review.getUserId().getName()}"></div>
+												<th:block th:switch="${review.reviewStar}">
+													<div class="star-color" th:case=1>
+														&#9733;&#9734;&#9734;&#9734;&#9734;
+													</div>
+													<div class="star-color" th:case=2>
+														&#9733;&#9733;&#9734;&#9734;&#9734;
+													</div>
+													<div class="star-color" th:case=3>
+														&#9733;&#9733;&#9733;&#9734;&#9734;
+													</div>
+													<div class="star-color" th:case=4>
+														&#9733;&#9733;&#9733;&#9733;&#9734;
+													</div>
+													<div class="star-color" th:case=*>
+														&#9733;&#9733;&#9733;&#9733;&#9733;
+													</div>
+												</th:block>
+												<div class="updated"
+													th:text="${#temporals.format(review.getUpdatedAt,'yyyy年MM月dd日')}">
+												</div>
+												<div th:text="${review.getReviewText()}"></div>
+											</div>
+										</div>
+									</div>
+<!--									レビューがある時-->
+									<div class="text-center mt-3 mb-3">
+										<a th:href="@{/houses/__${house.getId()}__/review}">すべてのレビューを見る</a>
+									</div>
+<!--									レビューがない時-->
+									<div class="text-center mt-3 mb-3">
+										<span>まだレビューがありません。</span>
 									</div>
 								</div>
-								
-								
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
 		</main>
 
 		<!-- フッター -->
